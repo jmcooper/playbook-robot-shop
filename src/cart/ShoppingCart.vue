@@ -24,7 +24,7 @@ export default {
   render() {
     const cartStore = useCartStore()
     const { cart, cartTotal } = storeToRefs(cartStore)
-    const { removeFromCart } = cartStore
+    // const { removeFromCart } = cartStore
     const BaseButton = resolveComponent('BaseButton')
 
     return h('div', { class: 'container' }, [
@@ -32,7 +32,7 @@ export default {
       h(EmptyCart),
       h('ul', { class: 'cart' },
         cart.value.map((product, index) => h('li', { class: 'cart-item', key: index }, [
-          h(ProductInfo, { product }, () => h(BaseButton, { onclick: () => removeFromCart(product) }, ['Remove'])),
+          h(ProductInfo, { product }, () => h(BaseButton, () => 'Remove')),
         ])),
       ),
     ])
