@@ -5,7 +5,7 @@
     <ul class="cart" v-if="cart.length > 0">
       <li class="cart-item" v-for="(product, index) in cart" :key="index">
         <ProductInfo :product="product">
-          <BaseButton @click="removeFromCart(product)">Remove</BaseButton>
+          <BaseButton v-on:click="removeFromCart(product)">Remove</BaseButton>
         </ProductInfo>
       </li>
     </ul>
@@ -24,7 +24,7 @@ export default {
   render() {
     const cartStore = useCartStore()
     const { cart, cartTotal } = storeToRefs(cartStore)
-    // const { removeFromCart } = cartStore
+    const { removeFromCart } = cartStore
     const BaseButton = resolveComponent('BaseButton')
 
     return h('div', { class: 'container' }, [
@@ -32,7 +32,7 @@ export default {
       h(EmptyCart),
       h('ul', { class: 'cart' },
         cart.value.map((product, index) => h('li', { class: 'cart-item', key: index }, [
-          h(ProductInfo, { product }, () => h(BaseButton, () => 'Remove')),
+          h(ProductInfo, { product }, () => h(BaseButton, { onClick: () => removeFromCart(product) }, () => 'Remove')),
         ])),
       ),
     ])
