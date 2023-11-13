@@ -1,0 +1,63 @@
+:root {
+  --color-primary: #d25ca1;
+  --color-secondary: #5cadd2;
+  --color-secondary-light: #7ccdf2;
+  --color-primary-light: #f27cb1;
+  --text-color: #444;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+a.active {
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+a.button.active {
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+a:visited {
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+.cta {
+  color: var(--color-primary);
+}
+
+a.cta {
+  color: var(--color-primary);
+}
+
+a.cta:visited {
+  color: var(--color-primary);
+}
+
+a.cta:hover {
+  color: var(--color-primary-light);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
