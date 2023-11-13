@@ -14,27 +14,30 @@
 </template> -->
 <script>
 import { h, resolveComponent } from 'vue'
-// import { storeToRefs } from 'pinia'
+import { storeToRefs } from 'pinia'
 import EmptyCart from './EmptyCart.vue'
-// import ProductInfo from '@/catalog/product-info/ProductInfo.vue'
-// import { useCartStore } from '@/stores/cart'
+import ProductInfo from '@/catalog/product-info/ProductInfo.vue'
+import { useCartStore } from '@/stores/cart'
 // import { toCurrency } from '@/shared/formatters'
 
 export default {
   render() {
-    // const cartStore = useCartStore()
-    // const { cart, cartTotal } = storeToRefs(cartStore)
+    const cartStore = useCartStore()
+    const { cart, cartTotal } = storeToRefs(cartStore)
     // const { removeFromCart } = cartStore
     const BaseButton = resolveComponent('BaseButton')
 
     return h('div', { class: 'container' }, [
       h('h1', ['Your Cart']),
       h(EmptyCart),
+      h('ul', { class: 'cart' },
+        cart.value.map((product, index) => h('li', { class: 'cart-item', key: index }, [
+          h(ProductInfo, { product }),
+        ])),
+      ),
     ])
   },
 }
-
-
 </script>
 
 <style scoped>
