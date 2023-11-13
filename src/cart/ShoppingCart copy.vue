@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="container">
     <h1>Your Cart</h1>
     <EmptyCart v-if="cart.length === 0" />
@@ -11,29 +11,18 @@
     </ul>
     <div v-if="cart.length > 0" class="total">Total: {{ toCurrency(cartTotal) }}</div>
   </div>
-</template> -->
-<script>
-import { h, resolveComponent } from 'vue'
-// import { storeToRefs } from 'pinia'
+</template>
+
+<script setup>
+import { storeToRefs } from 'pinia'
 import EmptyCart from './EmptyCart.vue'
-// import ProductInfo from '@/catalog/product-info/ProductInfo.vue'
-// import { useCartStore } from '@/stores/cart'
-// import { toCurrency } from '@/shared/formatters'
+import ProductInfo from '@/catalog/product-info/ProductInfo.vue'
+import { useCartStore } from '@/stores/cart'
+import { toCurrency } from '@/shared/formatters'
 
-export default {
-  render() {
-    // const cartStore = useCartStore()
-    // const { cart, cartTotal } = storeToRefs(cartStore)
-    // const { removeFromCart } = cartStore
-    const BaseButton = resolveComponent('BaseButton')
-
-    return h('div', { class: 'container' }, [
-      h('h1', ['Your Cart']),
-      h(EmptyCart),
-    ])
-  },
-}
-
+const cartStore = useCartStore()
+const { cart, cartTotal } = storeToRefs(cartStore)
+const { removeFromCart } = cartStore
 
 </script>
 
