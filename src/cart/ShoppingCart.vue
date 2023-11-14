@@ -33,7 +33,7 @@ export default {
         h(ProductInfo, { product }, () => h(BaseButton, { onClick: () => removeFromCart(product) }, () => 'Remove')),
       ])),
     )
-    console.log(cartTotal)
+
     return h('div', { class: 'container' }, [
       h('h1', ['Your Cart']),
       cart.value.length > 0 ? cartItems : emptyCart,
