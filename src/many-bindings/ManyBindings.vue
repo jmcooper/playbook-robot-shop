@@ -4,7 +4,7 @@
   <button @click="immutablyUpdateFirstRobotName()">Immutably Update 1st Robot Name</button>
   <button @click="immutablyUpdateSecondRobotName()">Immutably Update 2nd Robot Name</button>
   <h1>{{ title }}</h1>
-  <div class="all-products">
+  <div class="all-products" v-once>
     <div class="product" v-for="(product, index) in products" :key="index">
       <div class="name">Name: {{ products[index].name }}</div>
       <div class="property" v-for="(property, index2) in Object.keys(product)" :key="index2">
