@@ -4,6 +4,7 @@
 
 <style scoped>
 div {
-  font-size: 20px;
+  padding: 15px;
+  font-size: 26px;
 }
 </style>
