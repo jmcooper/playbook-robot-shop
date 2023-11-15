@@ -14,11 +14,20 @@
 </template>
 
 <script setup>
+import { defineAsyncComponent } from 'vue'
 import { storeToRefs } from 'pinia'
-import EmptyCart from './EmptyCart.vue'
-import ProductInfo from '@/catalog/product-info/ProductInfo.vue'
 import { useCartStore } from '@/stores/cart'
 import { toCurrency } from '@/shared/formatters'
+
+const LoadingMessage = defineAsyncComponent(() => import('@/shared/LoadingMessage.vue'))
+const EmptyCart = defineAsyncComponent(() => import('./EmptyCart.vue'))
+const ProductInfo = defineAsyncComponent({
+  loader: () => new Promise((resolve) => {
+    setTimeout(() => import('@/catalog/product-info/ProductInfo.vue').then(c => resolve(c)), 3000)
+  }),
+  loadingComponent: LoadingMessage,
+  delay: 200,
+})
 
 const cartStore = useCartStore()
 const { cart, cartTotal } = storeToRefs(cartStore)
