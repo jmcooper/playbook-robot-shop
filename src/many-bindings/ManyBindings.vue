@@ -4,7 +4,7 @@
   <button @click="immutablyUpdateFirstRobotName()">Immutably Update 1st Robot Name</button>
   <button @click="immutablyUpdateSecondRobotName()">Immutably Update 2nd Robot Name</button>
   <h1>{{ title }}</h1>
-  <div class="all-products" v-memo="[products[0]]">
+  <div class="all-products">
     <div class="product" v-for="(product, index) in products" :key="index">
       <div class="name">Name: {{ products[index].name }}</div>
       <div class="property" v-for="(property, index2) in Object.keys(product)" :key="index2">
@@ -15,11 +15,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 import allProducts from './robots'
 const title = ref('Robot List')
 
-const products = ref(allProducts)
+const products = shallowRef(allProducts)
 
 function mutablyUpdateFirstRobotName() {
   products.value[0].name = 'Updated name'
