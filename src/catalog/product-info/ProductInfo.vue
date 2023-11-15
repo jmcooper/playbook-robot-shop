@@ -21,15 +21,15 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { onUpdated } from 'vue'
 import { toCurrency } from '@/shared/formatters'
 
-const props = defineProps({
-  product: { required: true },
-  activeId: { type: Number, required: false },
-})
+onUpdated(() => console.log('updated'))
 
-const selected = computed(() => props.activeId === props.product.id)
+defineProps({
+  product: { required: true },
+  selected: { type: Boolean, required: false },
+})
 
 const emit = defineEmits(['partCategorySelected'])
 
