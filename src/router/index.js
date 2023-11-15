@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ProductCatalog from '@/catalog/ProductCatalog.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +6,7 @@ const router = createRouter({
     {
       path: '/catalog',
       name: 'Catalog',
-      component: ProductCatalog,
+      component: () => import('@/catalog/ProductCatalog.vue'),
     },
     {
       path: '/cart',
