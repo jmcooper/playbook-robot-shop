@@ -24,8 +24,6 @@
 import { onUpdated } from 'vue'
 import { toCurrency } from '@/shared/formatters'
 
-onUpdated(() => console.log('updated'))
-
 defineProps({
   product: { required: true },
   selected: { type: Boolean, required: false },
