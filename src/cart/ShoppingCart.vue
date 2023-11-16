@@ -23,7 +23,7 @@ const LoadingMessage = defineAsyncComponent(() => import('@/shared/LoadingMessag
 const EmptyCart = defineAsyncComponent(() => import('./EmptyCart.vue'))
 const ProductInfo = defineAsyncComponent({
   loader: () => new Promise((resolve) => {
-    setTimeout(() => import('@/catalog/product-info/ProductInfo.vue').then(c => resolve(c)), 3000)
+    setTimeout(() => import('@/catalog/product-info/ProductInfo.vue').then(c => resolve(c)), 150)
   }),
   loadingComponent: LoadingMessage,
   delay: 200,
