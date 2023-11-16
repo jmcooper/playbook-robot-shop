@@ -41,11 +41,6 @@ watchEffect(async () => {
     inventory.value = await getInventory(props.product.id)
 })
 
-// watch(() => props.selected, async (newValue, oldValue) => {
-//   if (newValue || oldValue === undefined)
-//     inventory.value = await getInventory(props.product.id)
-// })
-
 const emit = defineEmits(['partCategorySelected'])
 
 const partCategoryClicked = (category) => {
