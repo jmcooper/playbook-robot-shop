@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { watch, ref } from 'vue'
+import { watchEffect, ref } from 'vue'
 import { toCurrency } from '@/shared/formatters'
 import { useProductStore } from '@/stores/product'
 
@@ -36,10 +36,15 @@ const props = defineProps({
   selected: { type: Boolean, required: false },
 })
 
-watch(() => props.selected, async (newValue, oldValue) => {
-  if (newValue || oldValue === undefined)
+watchEffect(async () => {
+  if (props.selected)
     inventory.value = await getInventory(props.product.id)
 })
+
+// watch(() => props.selected, async (newValue, oldValue) => {
+//   if (newValue || oldValue === undefined)
+//     inventory.value = await getInventory(props.product.id)
+// })
 
 const emit = defineEmits(['partCategorySelected'])
 
