@@ -36,8 +36,8 @@ const props = defineProps({
   selected: { type: Boolean, required: false },
 })
 
-watch(() => props.selected, async (newValue) => {
-  if (newValue)
+watch(() => props.selected, async (newValue, oldValue) => {
+  if (newValue || oldValue === undefined)
     inventory.value = await getInventory(props.product.id)
 })
 
