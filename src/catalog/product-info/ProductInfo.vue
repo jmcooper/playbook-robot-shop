@@ -3,7 +3,10 @@
     <div class="product-details">
       <img :src="product.imageUrl" :alt="product.name" />
       <div class="product-info">
-        <div class="name">{{ product.name }}</div>
+        <div class="name">
+          {{ product.name }}
+          <span v-if="inventory">({{ inventory }} items in stock)</span>
+        </div>
         <div class="description">{{ product.description }}</div>
         <div class="category" @click="partCategoryClicked(product.category)">Part Category: {{ product.category }}</div>
       </div>
@@ -21,11 +24,21 @@
 </template>
 
 <script setup>
+import { watch, ref } from 'vue'
 import { toCurrency } from '@/shared/formatters'
+import { useProductStore } from '@/stores/product'
 
-defineProps({
+const { getInventory } = useProductStore()
+const inventory = ref(null)
+
+const props = defineProps({
   product: { required: true },
   selected: { type: Boolean, required: false },
+})
+
+watch(() => props.selected, async (newValue) => {
+  if (newValue)
+    inventory.value = await getInventory(props.product.id)
 })
 
 const emit = defineEmits(['partCategorySelected'])
