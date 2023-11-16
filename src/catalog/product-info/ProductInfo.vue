@@ -21,7 +21,6 @@
 </template>
 
 <script setup>
-import { onUpdated } from 'vue'
 import { toCurrency } from '@/shared/formatters'
 
 defineProps({
