@@ -7,8 +7,6 @@ export default function usePagination(filteredSearchResults) {
   const prevPage = () => { currentPage.value -= 1 }
   const setPage = (pageNumber) => { currentPage.value = pageNumber }
 
-  onMounted(() => console.log('Mounted: usePagination'))
-
   const currentStartIndex = computed(
     () => (currentPage.value - 1) * pageSize + 1,
   )

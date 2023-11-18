@@ -19,11 +19,6 @@ const router = createRouter({
       component: () => import('@/search/ProductSearch.vue'),
     },
     {
-      path: '/many-bindings',
-      name: 'Many Bindings',
-      component: () => import('@/many-bindings/ManyBindings.vue'),
-    },
-    {
       path: '/',
       redirect: '/catalog',
     },

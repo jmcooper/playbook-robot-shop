@@ -5,18 +5,10 @@
     <router-link to="/search" routerLinkActive="active">Search</router-link>
     <div><router-link to="/cart" routerLinkActive="active">Cart</router-link></div>
     <div class="right">
-      <Component class="menu" @click="signedIn = !signedIn" :is="activeComponent" />
+      <div class="sign-in">Sign In</div>
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref, computed } from 'vue'
-import SignIn from './SignIn.vue'
-import MyAccount from './MyAccount.vue'
-const signedIn = ref(false)
-const activeComponent = computed(() => signedIn.value ? MyAccount : SignIn)
-</script>
 
 <style scoped>
 .container {
@@ -42,5 +34,9 @@ const activeComponent = computed(() => signedIn.value ? MyAccount : SignIn)
 
 .menu {
   cursor: pointer;
+}
+
+.sign-in {
+  color: var(--color-primary);
 }
 </style>

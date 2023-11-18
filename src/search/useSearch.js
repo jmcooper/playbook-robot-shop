@@ -19,7 +19,5 @@ export default function useSearch(searchTerm) {
     return [...searchResults]
   })
 
-  onMounted(() => console.log('Mounted: useSearch'))
-
   return { searchResults: results }
 }
