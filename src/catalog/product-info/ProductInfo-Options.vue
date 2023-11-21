@@ -24,11 +24,10 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 import { toCurrency } from '@/shared/formatters'
 import { useProductStore } from '@/stores/product'
 
-export default defineComponent({
+export default {
   setup() {
     const { getInventory } = useProductStore()
 
@@ -56,7 +55,7 @@ export default defineComponent({
         this.inventory = await this.getInventory(this.product.id)
     },
   },
-})
+}
 </script>
 
 <style scoped>
